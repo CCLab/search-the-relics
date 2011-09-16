@@ -1,0 +1,65 @@
+<html>
+	<head>
+    <link href="/static/style.css" type="text/css" rel="stylesheet" />
+    <title>Wiki lubi zabytki :: wyszukiwarka zabytków</title>
+  </head>
+	<body>
+  <div style="width: 700px; margin: 10px auto;">
+    <form style="float: left;" action="" id="query-form" method="GET">
+      <input type="text" name="query" id="query" placeholder="Co?" class="input-text">
+      <input type="text" name="location" id="loaction" placeholder="Gdzie?" class="input-text">
+      <input type="submit" value="Szukaj" style="background-color: #ffd9c2;" />
+    </form>
+    <span style="float: left; margin-left: 50px; color: #5b5b5b">
+      Liczba wyników: {{ stat }}
+    </span>
+    <br style="clear: both" /> 
+    <table border="0">
+      <thead>
+      <tr>
+        <td class="relic">
+          Gdzie?
+        </td>
+        <td class="relic">
+          Co?
+        </td>
+        <td class="relic">
+          Z kiedy?
+        </td>
+        <td class="relic">
+          Wikipedia
+        </td>
+      </tr>
+      </thead>
+      <tbody>
+    {% for r in relics %}
+      <tr>
+        <td class="location">
+          <span class="big">{{ r.city }}</span><br />
+          {% if r.street %}
+            <span class="medium">{{ r.street }}</span><br />
+          {% endif %}
+          <span class="small">
+            W: {{ r.voivodship }}<br />
+            P: {{ r.poviat }}<br />
+            G: {{ r.parish }}
+          </span>
+        </td> 
+        <td class="relic">
+          {{ r.relic_name }}<br/>
+          <span class="medium">{{ r.relic_group }}</span>
+        </td> 
+        <td class="relic" style="width: 100px;">
+          {{ r.date }}
+        </td> 
+        <td style="width: 100px;">
+        <!-- this link doesn't work properli, because Wiki doesn't use unified URLs -->
+          <a href="http://pl.wikipedia.org/wiki/Wikiprojekt:Wiki_Lubi_Zabytki/wykazy/wojew%C3%B3dztwo_{{ r.voivodship }}/powiat_{{ r.poviat }}/Gmina_{{ r.parish }}/NID" target="_blank">Zobacz gminę na stronach konkursu</a>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+  </div>
+  </body>
+</html>

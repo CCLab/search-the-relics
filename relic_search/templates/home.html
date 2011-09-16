@@ -1,0 +1,17 @@
+<html>
+	<head>
+    <link href="/static/style.css" type="text/css" rel="stylesheet" />
+    <title>Wiki lubi zabytki :: wyszukiwarka zabytków</title>
+  </head>
+	<body>
+    <img src="/static/wiki_lubi_zabytki_logo.png" height="250px" alt="Logo Wiki Lubi Zabytki" />
+    <form class="main" action="results/" id="query-form" method="GET">
+    <!-- the other wy around because of css float right behaviour -->
+      <input tabindex="2" type="text" name="location" id="loaction" placeholder="Gdzie?" class="input-text">
+      <input tabindex="1" type="text" name="query" id="query" placeholder="Co?" class="input-text">
+      <input tabindex="3" type="submit" value="Szukaj" style="background-color: #ffd9c2;" />
+    </form>
+  </body>
+</html>
+
+
