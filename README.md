@@ -1,4 +1,4 @@
-WIKI LUBI ZABYTKI
+SEARCH THE RELICS
 =================
 Official monuments search website for the polish edition of Wiki Loves Monuments competition. It's an effect of collaboration of Centrum Cyfrowe Projekt: Polska with Wikimedia Polska. It's driven by the polish registry of monuments data provided by National Heritage Institute. 
 
