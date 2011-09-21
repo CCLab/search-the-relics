@@ -9,9 +9,9 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'data.db',
-        'USER': '',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'relics',
+        'USER': 'beet',
         'PASSWORD': '',
         'HOST': '',
         'PORT': '',
@@ -52,7 +52,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
 )
-ROOT_URLCONF = 'wiki_zabytki.urls'
+ROOT_URLCONF = 'wikilubizabytki.urls'
 
 TEMPLATE_DIRS = (
 )
@@ -64,8 +64,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.admin',
-    'wiki_zabytki.relic_search',
+    #'django.contrib.admin',
+    'wikilubizabytki.relic_search',
 )
 
 LOGGING = {

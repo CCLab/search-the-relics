@@ -1,16 +1,53 @@
 <html>
 	<head>
-    <link href="/static/style.css" type="text/css" rel="stylesheet" />
     <title>Wiki lubi zabytki :: wyszukiwarka zabytków</title>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href="/static/css/main.css" type="text/css" rel="stylesheet" />
   </head>
 	<body>
-    <img src="/static/wiki_lubi_zabytki_logo.png" height="250px" alt="Logo Wiki Lubi Zabytki" />
-    <form class="main" action="results/" id="query-form" method="GET">
-    <!-- the other wy around because of css float right behaviour -->
-      <input tabindex="2" type="text" name="location" id="loaction" placeholder="Gdzie?" class="input-text">
-      <input tabindex="1" type="text" name="query" id="query" placeholder="Co?" class="input-text">
-      <input tabindex="3" type="submit" value="Szukaj" style="background-color: #ffd9c2;" />
-    </form>
+    <table>
+
+    	<thead>
+        <tr>
+          <th colspan="2">
+            <img src="/static/img/szukaj_zabytkow.png" alt="Logo Szukaj zabytków"/>
+          </th>
+        </tr>
+      </thead>
+    
+      <tbody>
+    		<tr>
+    			<td class="search-form">
+              <form action="results/" id="query-form" method="GET">
+              <!-- the other wy around because of css float right behaviour -->
+                <p class="hint">np. zamek, spichrz, meczet lub Bytom, śląskie, Praga-Południe</p>
+                <input tabindex="2" type="text" name="location" id="loaction" placeholder="Gdzie?" />
+                <input tabindex="1" type="text" name="query" id="query" placeholder="Co?" />
+                <input tabindex="4" type="submit" value="Szukaj" />
+                <input tabindex="3" type="checkbox" name="strict_mode" />
+                <span class="strict">Dokładne wyszukiwanie</span>
+              </form>
+              <br class="clear" />
+              <br />
+              <form action="register/" id="query-form-02" method="GET">
+                <p class="hint">np. 382, 137/A/06 lub 1959</p>
+                <input tabindex="5" type="text" name="idef" class="long" placeholder="Numer w rejestrze..." />
+                <input tabindex="7" type="submit" value="Szukaj" />
+              </form>
+          </td>
+
+          <td class="description">
+              <p>
+                Witamy na uniwersalnej wyszukiwarce zabytków rejestrowych w Polsce, prowadzonej przez <a href="http://centrumcyfrowe.pl/" target="_blank">Centrum Cyfrowe Projekt: Polska</a>. Wyszukiwarka powstała pierwotnie na potrzeby konkursu <a href="http://wikilubizabytki.pl/" target="_blank">&bdquo;Wiki Lubi Zabytki&rdquo;</a> zorganizowanego przez <a href="http://pl.wikimedia.org/" target="_blank">Stowarzyszenie Wikimedia Polska</a>, ale chcemy aby była ona przydatna dla wszystkich, którzy szukają tego rodzaju informacji. Wyszukiwarka bazuje na danych rejestrowych dostarczonych przez <a href="http://www.nid.pl/" target="_blank">Narodowy Instytut Dziedzictwa</a> i przetworzonych przez wikipedystów na potrzeby uporządkowania zasobów Wikipedii. Sądzimy, że nasza wyszukiwarka jest dobrym przykładem, co pożytecznego może wyniknąć ze współpracy organizacji pozarządowych z instytucjami państwowymi w zakresie innowacyjnego udostępniania danych.
+              </p>
+              <br />
+              <img src="/static/img/ccpp_logo.png" alt="Logo Wiki Lubi Zabytki" />
+              <img src="/static/img/wikimedia_ogo.png" alt="Logo Wiki Lubi Zabytki" />
+              <img src="/static/img/wiki_lubi_zabytki_logo.png" alt="Logo Wiki Lubi Zabytki" />
+    			</td>
+    		</tr>
+    	</tbody>
+    </table>
   </body>
 </html>
 

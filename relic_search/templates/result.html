@@ -1,65 +1,92 @@
 <html>
 	<head>
-    <link href="/static/style.css" type="text/css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,500&subset=latin,latin-ext' rel='stylesheet' type='text/css'> 
+    <link href="/static/css/results.css" type="text/css" rel="stylesheet" />
     <title>Wiki lubi zabytki :: wyszukiwarka zabytków</title>
   </head>
 	<body>
-  <div style="width: 700px; margin: 10px auto;">
-    <form style="float: left;" action="" id="query-form" method="GET">
-      <input type="text" name="query" id="query" placeholder="Co?" class="input-text">
-      <input type="text" name="location" id="loaction" placeholder="Gdzie?" class="input-text">
-      <input type="submit" value="Szukaj" style="background-color: #ffd9c2;" />
-    </form>
-    <span style="float: left; margin-left: 50px; color: #5b5b5b">
-      Liczba wyników: {{ stat }}
-    </span>
-    <br style="clear: both" /> 
-    <table border="0">
-      <thead>
-      <tr>
-        <td class="relic">
-          Gdzie?
-        </td>
-        <td class="relic">
-          Co?
-        </td>
-        <td class="relic">
-          Z kiedy?
-        </td>
-        <td class="relic">
-          Wikipedia
-        </td>
-      </tr>
-      </thead>
-      <tbody>
-    {% for r in relics %}
-      <tr>
-        <td class="location">
-          <span class="big">{{ r.city }}</span><br />
-          {% if r.street %}
-            <span class="medium">{{ r.street }}</span><br />
-          {% endif %}
-          <span class="small">
-            W: {{ r.voivodship }}<br />
-            P: {{ r.poviat }}<br />
-            G: {{ r.parish }}
-          </span>
-        </td> 
-        <td class="relic">
-          {{ r.relic_name }}<br/>
-          <span class="medium">{{ r.relic_group }}</span>
-        </td> 
-        <td class="relic" style="width: 100px;">
-          {{ r.date }}
-        </td> 
-        <td style="width: 100px;">
-        <!-- this link doesn't work properli, because Wiki doesn't use unified URLs -->
-          <a href="http://pl.wikipedia.org/wiki/Wikiprojekt:Wiki_Lubi_Zabytki/wykazy/wojew%C3%B3dztwo_{{ r.voivodship }}/powiat_{{ r.poviat }}/Gmina_{{ r.parish }}/NID" target="_blank">Zobacz gminę na stronach konkursu</a>
-        </td>
-      </tr>
-    {% endfor %}
-    </tbody>
-    </table>
-  </div>
+    <div id="wrapper">
+      <!-- S E A R C H   P A N E L -->
+      <div id="search-panel">
+
+        <form action="/results/" method="GET">
+          <input tabindex="1" type="text" name="query" id="query" placeholder="Co?" />
+          <input tabindex="2" type="text" name="location" id="loaction" placeholder="Gdzie?" />
+          <span class="strict">Dokładne wyszukiwanie</span>
+          <input tabindex="3" type="checkbox" name="strict_mode" />
+          <input tabindex="4" type="submit" value="Szukaj" />
+        </form>
+
+        <hr />
+
+        <form action="/register/" method="GET">
+          <input tabindex="5" type="text" name="idef" class="long" placeholder="Numer w rejestrze..." />
+          <input tabindex="6" type="submit" value="Szukaj" />
+        </form>
+
+      </div>
+
+      <span class="results-desc">
+        Wyszukiwane{% ifequal s_m 'on' %} (dokładne){% endifequal %}: 
+      <span class="results-result">{{ r_q }}{% if l_q and r_q %}, {% endif %}{{ l_q }}</span>
+      </span>
+      <span class="results-desc" style="margin-left: 15px;">
+        Liczba wyników: <span class="results-result">{{ stat }}</span>
+      </span>
+
+      {% if stat != 0 %} <!-- django loop through db results -->
+      <table border="0">
+        <thead>
+          <tr>
+            <td class="relic">
+              Gdzie?
+            </td>
+            <td class="relic">
+              Co?
+            </td>
+            <td class="relic">
+              Z kiedy?
+            </td>
+            <td class="relic">
+              W rejestrze
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in relics %}
+          <tr>
+            <td class="location">
+              <span class="big">{{ r.city }}</span><br />
+              {% if r.street %}
+              <span class="medium">{{ r.street }}</span><br />
+              {% endif %}
+              <span class="small">
+                W: {{ r.voivodship }}<br />
+                P: {{ r.poviat }}<br />
+                G: {{ r.parish }}
+              </span>
+            </td> 
+            <td class="relic">
+              <span class="big">{{ r.relic_name }}</span><br/>
+              {% if r.relic_group %}
+              <span class="medium">{{ r.relic_group }}</span><br />
+              {% endif %}
+            </td> 
+            <td class="relic thin">
+              {% if r.date %}
+              <span>{{ r.date }}</span><br />
+              {% endif %}
+            </td> 
+            <td class="relic thin">
+              {% if r.idef %}
+              <span class="medium">{{ r.idef }}</span>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
+    </div>
   </body>
 </html>

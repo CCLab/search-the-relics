@@ -1,0 +1,96 @@
+body { 
+  width: 960px; 
+  margin: 10px auto; 
+  font-family: 'Ubuntu', sans-serif; 
+  font-weight: 300;
+}
+
+table {
+  width: 960px;
+}
+
+th {
+  width: 960px
+  padding: 10px 0px; 
+  text-align: left;
+}
+
+td {
+  padding-top: 10px;
+  vertical-align: top;
+}
+
+td.search-form {
+  padding-right: 10px;
+}
+
+td.description {
+  width: 440px; 
+  padding: 8px 5px;
+}
+
+input {
+  float:right; 
+
+  width: 244px;
+  height: 40px;
+  padding: 0px 10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  
+  color: #888;
+  font-size: 20px;
+
+  border-radius: 5px;
+  border: solid 2px #ffa570;
+}
+
+input[type=submit] {
+  background-color: #ffd9c2;
+}
+
+input[type=checkbox] {
+  width: 15px;
+  height: 15px;
+}
+
+a, a:visited {
+  text-decoration: none;
+  color: #805A44;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #ccc;
+}
+
+.description > p {
+  font-size: 16px;
+  color: #3b3b3b;
+  font-family: 'Ubuntu', sans-serif;
+  line-height: 1.5em;
+}
+
+.strict {
+  float: right; 
+  color: #5b5b5b; 
+  font-size: 16px;
+}
+
+.long {
+  width: 494px !important;
+}
+
+
+.hint {
+  font-size: 16px; 
+  margin-top: 0px; 
+  margin-left: 10px; 
+  color: #8b8b8b; 
+  margin-bottom: 3px;
+}
+
+.clear {
+  clear: both;
+}
+   
